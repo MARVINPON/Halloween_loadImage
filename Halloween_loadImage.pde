@@ -1,24 +1,44 @@
 //Click and Drag your cursor to "carve" the pumpkins
 
-PImage img;
+float rectX;
+float speed;
 
-void setup() {
-  size(800, 500);
-  img = loadImage("pumpkins.png");
-  image(img, 0, 0);
+
+PImage Heart;
+PImage Arrow;
+PImage somethingelse;
+
+
+void setup()  {
+  size(700,700);
+  
+  Heart = loadImage("Heart.jpg");
+  Arrow = loadImage("Arrow.png");
+
+ rectX=0;
+speed=350;
+
 }
+void draw() {
+  image(Heart,0,0,700,700);
+  image(Arrow,mouseX-300,mouseY-300,400,400);
+  
 
-void draw() 
-{
-  save("YOURNAME.Halloween.png");
+  fill(random(255));
+  textAlign(CENTER);
+  textSize(100);
+  text("Thank You",rectX,350);
+
+
+   rectX=rectX+speed;
+  if(rectX>150) {
+    speed=-15;
+  }
+  if(rectX<350){
+    speed=15;
+ 
 }
+  
 
-void mouseDragged()
-{
-  //"Carves" the pumpkins
-  //blendMode optional, might be problematic with a light or white background
-  blendMode(OVERLAY); 
-  noStroke();
-  fill(255, 200, 25);
-  ellipse(mouseX, mouseY, 5, 5);
+ 
 }
